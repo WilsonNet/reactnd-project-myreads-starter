@@ -196,3 +196,12 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+ul {
+  padding-inline-start: 0;
+  list-style-type: armenian;
+}
+
+.book-authors ul li {
+  padding: 3px 3px;
+}
