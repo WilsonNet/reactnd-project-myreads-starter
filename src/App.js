@@ -19,14 +19,24 @@ class BooksApp extends Component {
     BooksAPI.getAll().then(books => this.setState({ books }))
   }
 
+  updateBook = (book, shelf) => {
+    this.setState(state => (
+      book.shelf= shelf
+    ))
+    BooksAPI.update(book, shelf)
+  }
+
   render() {
     return (
       <div className="app">
-        {/* <Route path="/search-books" component={SearchBooks}>
+        {/* <Route path="/search" component={SearchBooks}>
         </Route> */}
         <Route path="/" render={() => (
           <ListBooks
             books={this.state.books}
+            onUpdateBook={(book, shelf) => {
+              this.updateBook(book, shelf)
+            }}
           />
         )} />
       </div>
