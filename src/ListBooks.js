@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class ListBooks extends Component {
+    state = {
+
+    }
 
     render() {
+        const { books } = this.props
         return (
             <div className="list-books">
                 <div className="list-books-title">
