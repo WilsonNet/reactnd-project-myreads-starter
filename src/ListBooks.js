@@ -21,7 +21,7 @@ class ListBooks extends Component {
                             <h2 className="bookshelf-title">Currently Reading</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                    {books.filter(book => book.shelf==='currentlyReading').map((book) => (
+                                    {books.filter(book => book.shelf === 'currentlyReading').map((book) => (
                                         <li key={book.id}>
                                             <div className="book">
                                                 <div className="book-top">
@@ -40,7 +40,7 @@ class ListBooks extends Component {
                                                 <div className="book-authors">
                                                     <ul>
                                                         {book.authors.map((author, index) => (
-                                                            <li　key={index}>{author}</li>
+                                                            <li key={index}>{author}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -53,8 +53,8 @@ class ListBooks extends Component {
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Want to Read</h2>
                             <div className="bookshelf-books">
-                            <ol className="books-grid">
-                                    {books.filter(book => book.shelf==='wantToRead').map((book) => (
+                                <ol className="books-grid">
+                                    {books.filter(book => book.shelf === 'wantToRead').map((book) => (
                                         <li key={book.id}>
                                             <div className="book">
                                                 <div className="book-top">
@@ -73,7 +73,7 @@ class ListBooks extends Component {
                                                 <div className="book-authors">
                                                     <ul>
                                                         {book.authors.map((author, index) => (
-                                                            <li　key={index}>{author}</li>
+                                                            <li key={index}>{author}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -86,8 +86,8 @@ class ListBooks extends Component {
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Read</h2>
                             <div className="bookshelf-books">
-                            <ol className="books-grid">
-                                    {books.filter(book => book.shelf==='read').map((book) => (
+                                <ol className="books-grid">
+                                    {books.filter(book => book.shelf === 'read').map((book) => (
                                         <li key={book.id}>
                                             <div className="book">
                                                 <div className="book-top">
@@ -106,7 +106,7 @@ class ListBooks extends Component {
                                                 <div className="book-authors">
                                                     <ul>
                                                         {book.authors.map((author, index) => (
-                                                            <li　key={index}>{author}</li>
+                                                            <li key={index}>{author}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -119,7 +119,13 @@ class ListBooks extends Component {
                     </div>
                 </div>
                 <div className="open-search">
-                    <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                    <Link
+                        to='/search-books'
+                    >
+                        <button>
+                            Add a book
+                        </button>
+                    </Link>
                 </div>
             </div>
         )
