@@ -1,19 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import BooksGrid from './BooksGrid';
 
-class ListBooks extends Component {
-    state = {
+function ListBooks (props) {
 
-    }
-
-    updateBook(event, book) {
-        this.props.onUpdateBook(book, event.target.value)
-    }
-
-
-    render() {
-
-        const { books } = this.props
+        const { books } = props
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -24,7 +15,8 @@ class ListBooks extends Component {
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Currently Reading</h2>
                             <div className="bookshelf-books">
-                                <ol className="books-grid">
+                                <BooksGrid onUpdateBook={props.onUpdateBook} books={books} filter={book => book.shelf === 'currentlyReading'} />
+                                {/* <ol className="books-grid">
                                     {books.filter(book => book.shelf === 'currentlyReading').map((book) => (
                                         <li key={book.id}>
                                             <div className="book">
@@ -51,12 +43,14 @@ class ListBooks extends Component {
                                             </div>
                                         </li>
                                     ))}
-                                </ol>
+                                </ol> */}
                             </div>
                         </div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Want to Read</h2>
                             <div className="bookshelf-books">
+                                <BooksGrid onUpdateBook={props.onUpdateBook} books={books} filter={book => book.shelf === 'wantToRead'} />
+                                {/*                                 
                                 <ol className="books-grid">
                                     {books.filter(book => book.shelf === 'wantToRead').map((book) => (
                                         <li key={book.id}>
@@ -84,13 +78,15 @@ class ListBooks extends Component {
                                             </div>
                                         </li>
                                     ))}
-                                </ol>
+                                </ol> */}
                             </div>
                         </div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Read</h2>
                             <div className="bookshelf-books">
-                                <ol className="books-grid">
+                                <BooksGrid onUpdateBook={props.onUpdateBook} books={books} filter={book => book.shelf === 'read'} />
+
+                                {/* <ol className="books-grid">
                                     {books.filter(book => book.shelf === 'read').map((book) => (
                                         <li key={book.id}>
                                             <div className="book">
@@ -117,7 +113,7 @@ class ListBooks extends Component {
                                             </div>
                                         </li>
                                     ))}
-                                </ol>
+                                </ol> */}
                             </div>
                         </div>
                     </div>
@@ -133,7 +129,7 @@ class ListBooks extends Component {
                 </div>
             </div>
         )
-    }
+    
 
 }
 
