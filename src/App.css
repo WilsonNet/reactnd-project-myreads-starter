@@ -205,3 +205,11 @@ ul {
 .book-authors ul li {
   padding: 3px 3px;
 }
+
+
+
+/* Framework */
+
+.text-gray {
+  color: gray !important;
+}
