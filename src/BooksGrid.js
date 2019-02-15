@@ -6,6 +6,8 @@ function BooksGrid(props) {
         props.onUpdateBook(book, event.target.value)
     }
 
+    const judgeShelf = (shelf, bookShelf) => shelf === bookShelf ? '✓' : '';
+
 
     return (
         <ol className="books-grid">
@@ -15,12 +17,12 @@ function BooksGrid(props) {
                         <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
                             <div className="book-shelf-changer">
-                                <select value="move" onChange={e => updateBook(e, book)}>
+                                <select value={book.shelf} onChange={e => updateBook(e, book)}>
                                     <option value="move" disabled>Move to...</option>
-                                    <option value="currentlyReading">Currently Reading</option>
-                                    <option value="wantToRead">Want to Read</option>
-                                    <option value="read">Read</option>
-                                    <option value="none">None</option>
+                                    <option value="currentlyReading">{ judgeShelf('currentlyReading', book.shelf) } Currently Reading</option>
+                                    <option value="wantToRead">{ judgeShelf('wantToRead', book.shelf) } Want to Read</option>
+                                    <option value="read">{ judgeShelf('read', book.shelf) } Read</option>
+                                    <option value="none">{ judgeShelf('none', book.shelf) } None</option>
                                 </select>
                             </div>
                         </div>
