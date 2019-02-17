@@ -11,7 +11,7 @@ function BooksGrid(props) {
 
     return (
         <ol className="books-grid">
-            {props.books && props.books.filter(props.filter).map((book) => (
+            {props.books.length > 0 && props.books.filter(props.filter).map((book) => (
                 <li key={book.id}>
                     <div className="book">
                         <div className="book-top">

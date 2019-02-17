@@ -9,7 +9,7 @@ import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
   state = {
-    query: '', 
+    query: '',
     books: []
   }
 
@@ -19,7 +19,7 @@ class SearchBooks extends Component {
   }
 
   searchBooks(query) {
-     BooksAPI.search(query).then(result => this.setState({ books: result }))
+    BooksAPI.search(query).then(result => this.setState({ books: result }))
   }
 
 
@@ -54,7 +54,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BooksGrid onUpdateBook={this.props.onUpdateBook} books={this.state.books} filter={(book) => true} />
+          {this.state.books && <BooksGrid onUpdateBook={this.props.onUpdateBook} books={this.state.books} filter={(book) => true} /> }
         </div>
       </div>)
   }
