@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
 import BooksGrid from './BooksGrid';
 import * as BooksAPI from './BooksAPI'
 
@@ -10,7 +9,7 @@ import * as BooksAPI from './BooksAPI'
 class SearchBooks extends Component {
   state = {
     query: '',
-    books: []
+    books: [],
   }
 
   updateQuery(query) {
@@ -18,12 +17,22 @@ class SearchBooks extends Component {
     this.searchBooks(query)
   }
 
+  shelfBook(book) {
+    const isStored = this.props.storedBooks.find(sb => sb.id === book.id);
+    book.shelf = isStored ? isStored.shelf : 'none'
+    return book;
+  }
+
   searchBooks(query) {
-    BooksAPI.search(query).then(result => this.setState({ books: result }))
+    BooksAPI.search(query).then(result => {
+      result = result.map(book => this.shelfBook(book))
+      this.setState({ books: result })
+    })
   }
 
 
   render() {
+    console.log('storedBooks', this.props.storedBooks)
 
     const { query } = this.state
 
@@ -54,7 +63,11 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.books && <BooksGrid onUpdateBook={this.props.onUpdateBook} books={this.state.books} filter={(book) => true} /> }
+          {this.state.books && this.state.books.length > 0 ? (
+            <BooksGrid onUpdateBook={this.props.onUpdateBook} books={this.state.books} filter={(book) => true} />
+          ) : (
+              <h2>No results found : (</h2>
+            )}
         </div>
       </div>)
   }

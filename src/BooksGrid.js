@@ -7,8 +7,7 @@ function BooksGrid(props) {
     }
 
     const judgeShelf = (shelf, bookShelf) => shelf === bookShelf ? '✓' : '';
-
-
+    console.log(props.books)
     return (
         <ol className="books-grid">
             {props.books.length > 0 && props.books.filter(props.filter).map((book) => (

@@ -33,9 +33,12 @@ class BooksApp extends Component {
       <div className="app">
         <Route path="/search" render={() => (
           <SearchBooks
+            storedBooks={this.state.books}
             onUpdateBook={(book, shelf) => {
               this.updateBook(book, shelf)
-            }}
+            }
+
+            }
           />
         )
         }>
