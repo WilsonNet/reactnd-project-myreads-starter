@@ -32,8 +32,6 @@ class SearchBooks extends Component {
 
 
   render() {
-    console.log('storedBooks', this.props.storedBooks)
-
     const { query } = this.state
 
     return (
