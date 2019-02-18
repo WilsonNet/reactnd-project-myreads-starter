@@ -22,9 +22,6 @@ This projects requires Node.js to be runned.
 1. Run `npm start` to start the server and run the project
 1. Access http://http://localhost:3000/
 
-### Online Version
-Or you can use an online version here https://wilsonnet.github.io/reactnd-project-myreads-starter
-
 ## What can you do?
 
 * Select a shelf for each book
