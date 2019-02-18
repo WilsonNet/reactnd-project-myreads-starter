@@ -17,15 +17,16 @@ class SearchBooks extends Component {
     this.searchBooks(query)
   }
 
+  checkStored = (book) => this.props.storedBooks.find(sb => sb.id === book.id)
+
   shelfBook(book) {
-    const isStored = this.props.storedBooks.find(sb => sb.id === book.id);
+    const isStored = this.checkStored(book)
     book.shelf = isStored ? isStored.shelf : 'none'
-    return book;
   }
 
   searchBooks(query) {
     BooksAPI.search(query).then(result => {
-      result = result.map(book => this.shelfBook(book))
+      result.forEach(book => this.shelfBook(book))
       this.setState({ books: result })
     })
   }
