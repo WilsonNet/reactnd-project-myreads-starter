@@ -15,15 +15,16 @@ class BooksApp extends Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
   }
-  componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({ books }))
+  async componentDidMount() {
+    const books = await BooksAPI.getAll()
+    this.setState({ books })
   }
 
   updateBook = (book, shelf) => {
-    this.setState(state => (
-      book.shelf = shelf
-    ))
     BooksAPI.update(book, shelf)
+    book.shelf = shelf
+    console.log('hehe', this.state.books)
+    this.setState(prevState => ({books: prevState.books.filter(b=> b.id !== book.id).concat( [ book ] )}))
   }
 
 
